@@ -1,0 +1,59 @@
+
+		<div style="margin: 15px;">
+			<form class="layui-form" action="">
+			
+			     <input type="text" name="userCode" style="display:none;" />
+			     
+			     <div class="layui-form-item">
+					<label class="layui-form-label">登录名</label>
+					<div class="layui-input-block">
+						<input type="text" name="userName" lay-verify="required" placeholder="登录名" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			     
+			    <div class="layui-form-item">
+					<label class="layui-form-label">联系电话</label>
+					<div class="layui-input-block">
+						<input type="text" name="phone" lay-verify="required" placeholder="联系电话" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			
+				<div class="layui-form-item">
+					<label class="layui-form-label">用户密码</label>
+					<div class="layui-input-block">
+						<input type="password" name="password" lay-verify="required" placeholder="用户密码" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">邮箱</label>
+					<div class="layui-input-block">
+						<input type="text" name="email" lay-verify="required" placeholder="邮箱" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+		 
+				<div class="layui-form-item">
+					<label class="layui-form-label">性别</label>
+					<div class="layui-input-block">
+						 <select lay-verify="required"  name="sex">
+								 <option value='Y'>男</option>
+								 <option value='N'>女</option>
+						 </select>
+					</div> 
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">联系地址</label>
+					<div class="layui-input-block">
+						<input type="text" name="address" lay-verify="required" placeholder="联系地址" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<!--<div class="layui-form-item">-->
+					<!--<label class="layui-form-label">上级用户编号</label>-->
+					<!--<div class="layui-input-block">-->
+						<!--<input type="password" name="parentCode" lay-verify="required" placeholder="上级用户编号" autocomplete="off" class="layui-input">-->
+					<!--</div>-->
+				<!--</div>-->
+				
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>

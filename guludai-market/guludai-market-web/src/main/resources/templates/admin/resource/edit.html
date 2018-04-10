@@ -1,0 +1,106 @@
+<div style="margin: 15px;">
+    <form class="layui-form" action="">
+    <input type="text" name="resourceCode" style="display:none;" />
+        <div class="layui-form-item">
+            <label class="layui-form-label">资源名</label>
+            <div class="layui-input-block">
+                <input type="text" name="resourceName" lay-verify="required" autocomplete="off" placeholder="请输入菜单"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">父级菜单</label>
+
+            <div class="layui-input-block">
+                <select id="resourceParentCode" name="resourceParentCode" lay-verify="required" lay-search="">
+                    <option value="-1">请选择父级菜单</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">资源地址</label>
+
+            <div class="layui-input-block">
+                <input type="text" name="resourcePath" placeholder="资源地址(如:/web/xxx/xxx)" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+         <div class="layui-form-item">
+            <label class="layui-form-label">排序字段</label>
+            <div class="layui-input-block">
+                <input type="text" value="100" name="resourceOrder" placeholder="排序字段" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+					<label class="layui-form-label">类型</label>
+					<div class="layui-input-block">
+						 <select name="resourceType" lay-verify="required">
+								 <option value='0'>功能</option>
+								 <option value='1'>菜单</option>
+						 </select>
+					</div> 
+		</div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">跳转地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="resourceHref" placeholder="跳转地址(非必填)" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">图标</label>
+            <div class="layui-input-block">
+              	<div class="layui-input-inline" style="width:77%;">
+			                <input type="text" class="layui-input"name="resourceIcon" placeholder="请输入icon，来源font-awesome" autocomplete="off" />
+			            </div> 
+			             <button type="button" id="btn_edit2" class="layui-btn layui-btn">
+			                <i class="layui-icon">&#xe654;</i>
+			             </button>
+                <!-- <input type="text" name="resourceIcon" placeholder="请输入icon，来源font-awesome" autocomplete="off"
+                       class="layui-input"> -->
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备注</label>
+
+            <div class="layui-input-block">
+                <textarea class="layui-textarea layui-hide" name="resourceDescription" id="description_editor"></textarea>
+            </div>
+        </div>
+        <button lay-filter="edit" lay-submit style="display: none;"></button>
+    </form>
+</div>
+
+<script type="text/javascript">
+ 
+$('#btn_edit2').on('click', function () {
+	$("[name='resourceIcon']").css("background","");
+	$.get('icon', null, function (form) {
+		layer.open({
+            type: 1,
+            title: '图标展示',
+            content: form,
+            shade: false,
+            offset: ['20px', '20%'],
+            area: ['650px', '400px'],
+            maxmin: true,
+            yes: function (index) {
+            	
+            },
+            full: function (elem) {
+                var win = window.top === window.self ? window : parent.window;
+                $(win).on('resize', function () {
+                    var $this = $(this);
+                    elem.width($this.width()).height($this.height()).css({
+                        top: 0,
+                        left: 0
+                    });
+                    elem.children('div.layui-layer-content').height($this.height() - 95);
+                });
+            },
+            success: function (layero, index) {
+                    //这里可以写ajax方法提交表单
+                    return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+            }
+        });
+   });
+});
+</script>

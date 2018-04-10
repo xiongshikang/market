@@ -1,0 +1,27 @@
+# Created by .ignore support plugin (hsz.mobi)
+dist
+build
+final
+*.bind
+*.swo
+*.tmp
+id_rsa*
+**build/
+**/target/
+.settings/
+*.log
+*.class
+**/*.class
+.classpath
+.project
+*.swp
+bin/
+.DS_Store
+.idea
+**/*.iml
+log/
+.springBeans
+*.springBeans
+.bpmn/
+
+

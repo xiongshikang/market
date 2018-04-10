@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.market.domain.dao.ApproveSecurityUserLoginLogEntityMapper">
+  <resultMap id="BaseResultMap" type="cn.guludai.market.domain.entity.ApproveSecurityUserLoginLogEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <result column="client_ip" jdbcType="VARCHAR" property="clientIp" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="version" jdbcType="BIGINT" property="version" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="data_status" jdbcType="CHAR" property="dataStatus" />
+    <result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_code, client_ip, login_time, user_name, version, create_time, update_time, 
+    data_status, disk_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from approve_security_user_login_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from approve_security_user_login_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.guludai.market.domain.entity.ApproveSecurityUserLoginLogEntity">
+    insert into approve_security_user_login_log (id, user_code, client_ip, 
+      login_time, user_name, version, 
+      create_time, update_time, data_status, 
+      disk_status)
+    values (#{id,jdbcType=BIGINT}, #{userCode,jdbcType=VARCHAR}, #{clientIp,jdbcType=VARCHAR}, 
+      #{loginTime,jdbcType=TIMESTAMP}, #{userName,jdbcType=VARCHAR}, #{version,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{dataStatus,jdbcType=CHAR}, 
+      #{diskStatus,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.guludai.market.domain.entity.ApproveSecurityUserLoginLogEntity">
+    insert into approve_security_user_login_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userCode != null">
+        user_code,
+      </if>
+      <if test="clientIp != null">
+        client_ip,
+      </if>
+      <if test="loginTime != null">
+        login_time,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="dataStatus != null">
+        data_status,
+      </if>
+      <if test="diskStatus != null">
+        disk_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clientIp != null">
+        #{clientIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataStatus != null">
+        #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="diskStatus != null">
+        #{diskStatus,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.guludai.market.domain.entity.ApproveSecurityUserLoginLogEntity">
+    update approve_security_user_login_log
+    <set>
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clientIp != null">
+        client_ip = #{clientIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataStatus != null">
+        data_status = #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="diskStatus != null">
+        disk_status = #{diskStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.guludai.market.domain.entity.ApproveSecurityUserLoginLogEntity">
+    update approve_security_user_login_log
+    set user_code = #{userCode,jdbcType=VARCHAR},
+      client_ip = #{clientIp,jdbcType=VARCHAR},
+      login_time = #{loginTime,jdbcType=TIMESTAMP},
+      user_name = #{userName,jdbcType=VARCHAR},
+      version = #{version,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      data_status = #{dataStatus,jdbcType=CHAR},
+      disk_status = #{diskStatus,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

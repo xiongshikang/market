@@ -1,0 +1,147 @@
+
+		<div style="margin: 15px;">
+			<form class="layui-form" action="">
+				
+				<input type="text" name="id"  style="display: none;" />
+				<input type="text" name="activitiCode"  style="display: none;" />
+				<input type="text" name="flowCode" style="display: none;" />
+				<input type="text" name="applyCode" style="display: none;" />
+				<input type="text" name="transactUser" style="display: none;" />
+				<input type="text" name="yesOrNo"  style="display: none;" />
+				<input type="text" name="taskActionUserCode"  style="display: none;" />
+			 	<div class="layui-form-item">
+					<div  class="layui-input-block">
+						<label style="text-again:center;font-size:20px;" id="errorInfo"></label>
+					</div>
+				</div>
+				 <div class="layui-colla-content layui-show">
+					<div class="layui-form-item">
+						<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+							<legend>
+								<span style="color: #228B22;">流水单祥情</span>
+							</legend>
+						</fieldset>
+					</div>
+					<div class="layui-form">
+						<table class="layui-table">
+							<colgroup>
+								<col width="50%">
+								<col width="50%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>描述</th>
+									<th>内容</th>
+								</tr>
+							</thead>
+							<tbody id="tbody3">
+								 
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				 <div class="layui-form-item">
+					<label style="width:110px;" class="layui-form-label">审批批款</label>
+					<div  class="layui-input-block">
+						<input  lay-verify="required" type="text" name="loanMoney"   placeholder="审批批款金额" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label style="width:110px;" class="layui-form-label">实际放款</label>
+					<div class="layui-input-block">
+						<input lay-verify="required"  type="text" name="loanActualMoney"   placeholder="实际放款金额" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label style="width:110px;" class="layui-form-label">放款起息日</label>
+					<div  class="layui-input-block">
+					    <input type="text" lay-verify="required" name="interestStartTime" id="date"  placeholder="放款起息日" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label style="width:110px;" class="layui-form-label">回款到期日</label>
+					<div class="layui-input-block">
+						<input type="text" lay-verify="required" name="interestEndTime" id="date"  placeholder="回款到期日" autocomplete="off" class="layui-input" onclick="layui.laydate({elem: this})">
+					</div>
+				</div>
+				
+				<div class="layui-colla-content layui-show">
+					<div class="layui-form-item">
+						<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+							<legend>
+								<span style="color: #228B22;">批注：</span>
+							</legend>
+						</fieldset>
+					</div>
+					<div class="layui-form">
+						<table class="layui-table">
+							<colgroup>
+								<col width="20%">
+								<col width="20%">
+								<col width="60%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>审批人</th>
+									<th>审批日期</th>
+									<th>批注内容</th>
+								</tr>
+							</thead>
+							<tbody id="tbody">
+								 
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div class="layui-colla-content layui-show">
+					<div class="layui-form-item">
+						<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+							<legend>
+								<span style="color: #228B22;">批注:</span>
+							</legend>
+						</fieldset>
+					</div>
+					<div class="layui-form">
+						<table class="layui-table">
+							<colgroup>
+							    <col width="15%">
+							    <col width="15%">
+								<col width="50%">
+								<col width="20%">
+							</colgroup>
+							<thead>
+								<tr>
+								    <th>节点</th>
+								    <th>提交人</th>
+									<th>内容</th>
+									<th>时间</th>
+								</tr>
+							</thead>
+							<tbody id="tbody4">
+								 
+							</tbody>
+						</table>
+					</div>
+				</div>
+				  <div  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+			          <div class="layui-form-item" style="margin-bottom:0px;">
+			            <label class="layui-form-label">备注：</label>
+			            <div class="layui-input-inline" style="width:77%;">
+			                <input type="text" class="layui-input" name="comment">
+			            </div> 
+			             <button class="layui-btn layui-btn-small" onclick="addComment()">提交备注</button>
+			        </div> 
+			    </div>
+				<div class="layui-form-item layui-form-text">
+					<label style="width:110px;" class="layui-form-label">备注</label>
+					<div class="layui-input-block">
+						<textarea lay-verify="required"  class="layui-textarea layui-hide" name="flowNodeResult"  id="description_editor"></textarea>
+					</div>
+				</div>	
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>

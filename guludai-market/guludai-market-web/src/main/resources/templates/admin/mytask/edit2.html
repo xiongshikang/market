@@ -1,0 +1,26 @@
+
+		<div style="margin: 15px;">
+			<form class="layui-form" action="">
+				<input type="text" name="id"  style="display: none;" />
+				<input type="text" name="activitiCode"  style="display: none;" />
+				<input type="text" name="flowCode" style="display: none;" />
+				<input type="text" name="applyCode" style="display: none;" />
+				<input type="text" name="transactUser" style="display: none;" />
+				
+				<div class="layui-form-item">
+					<label style="width:100px;" class="layui-form-label">下一个操作人</label>
+					<div class="layui-input-block">
+						 <select lay-verify="required" lay-filter="taskActionUserCode" name="taskActionUserCode">
+								 <option value=''>请选择任务接受人</option>
+						 </select>
+					</div> 
+				</div>
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">备注</label>
+					<div class="layui-input-block">
+						<textarea lay-verify="required" class="layui-textarea layui-hide" name="flowNodeResult"  id="description_editor"></textarea>
+					</div>
+				</div>	
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>

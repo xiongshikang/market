@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head>
+    <meta charset="UTF-8">
+    <title>显示图标</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="static/plugins/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="static/css/global.css" media="all"/>
+    <link rel="stylesheet" href="static/plugins/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="static/plugins/zTree/zTreeStyle/zTreeStyle.css" />
+</head>
+
+<body>
+<div class="admin-main">
+    <div class="layui-form">
+						<table class="layui-table">
+						   <tr>
+								<td><i class="fa fa-glass" aria-hidden="true" data-icon="fa-glass"></i></td>
+								<td><i class="fa fa-music" aria-hidden="true" data-icon="fa-music"></i></td>
+								<td><i class="fa fa-search" aria-hidden="true" data-icon="fa-search"></i></td>
+								<td><i class="fa fa-envelope-o" aria-hidden="true" data-icon="fa-envelope-o"></i></td>
+								<td><i class="fa fa-heart" aria-hidden="true" data-icon="fa-heart"></i></td>
+								<td><i class="fa fa-film" aria-hidden="true" data-icon="fa-film"></i></td>
+								<td><i class="fa fa-th-large" aria-hidden="true" data-icon="fa-th-large"></i></td>
+								<td><i class="fa fa-th" aria-hidden="true" data-icon="fa-th"></i></td>
+								<td><i class="fa fa-glass" aria-hidden="true" data-icon="fa-glass"></i></td>
+								<td><i class="fa fa-star" aria-hidden="true" data-icon="fa-star"></i></td>
+								<td><i class="fa fa-star-o" aria-hidden="true" data-icon="fa-star-o"></i></td>
+								<td><i class="fa fa-user" aria-hidden="true" data-icon="fa-user"></i></td>
+								<td><i class="fa fa-th-list" aria-hidden="true" data-icon="fa-th-list"></i></td>
+						   </tr>
+						   <tr>
+						   		<td><i class="fa fa-search-minus" aria-hidden="true" data-icon="fa-search-minus"></i></td>
+								<td><i class="fa fa-power-off" aria-hidden="true" data-icon="fa-power-off"></i></td>
+								<td><i class="fa fa-signal" aria-hidden="true" data-icon="fa-signal"></i></td>
+								<td><i class="fa fa-gear" aria-hidden="true" data-icon="fa-gear"></i></td>
+								<td><i class="fa fa-trash-o" aria-hidden="true" data-icon="fa-trash-o"></i></td>
+								<td><i class="fa fa-home" aria-hidden="true" data-icon="fa-home"></i></td>
+								<td><i class="fa fa-file-o" aria-hidden="true" data-icon="fa-file-o"></i></td>
+								<td><i class="fa fa-clock-o" aria-hidden="true" data-icon="fa-clock-o"></i></td>
+								<td><i class="fa fa-road" aria-hidden="true" data-icon="fa-road"></i></td>
+								<td><i class="fa fa-download" aria-hidden="true" data-icon="fa-download"></i></td>
+								<td><i class="fa fa-arrow-circle-o-down" aria-hidden="true" data-icon="fa-arrow-circle-o-down"></i></td>
+								<td><i class="fa fa-arrow-circle-o-up" aria-hidden="true" data-icon="fa-arrow-circle-o-up"></i></td>
+								<td><i class="fa fa-inbox" aria-hidden="true" data-icon="fa-inbox"></i></td>
+						   </tr>
+						    <tr>
+						   		<td><i class="fa fa-play-circle-o" aria-hidden="true" data-icon="fa-play-circle-o"></i></td>
+								<td><i class="fa fa-rotate-right" aria-hidden="true" data-icon="fa-rotate-right"></i></td>
+								<td><i class="fa fa-refresh" aria-hidden="true" data-icon="fa-refresh"></i></td>
+								<td><i class="fa fa-list-alt" aria-hidden="true" data-icon="fa-list-alt"></i></td>
+								<td><i class="fa fa-lock" aria-hidden="true" data-icon="fa-lock"></i></td>
+								<td><i class="fa fa-flag" aria-hidden="true" data-icon="fa-flag"></i></td>
+								<td><i class="fa fa-headphones" aria-hidden="true" data-icon="fa-headphones"></i></td>
+								<td><i class="fa fa-volume-off" aria-hidden="true" data-icon="fa-volume-off"></i></td>
+								<td><i class="fa fa-volume-down" aria-hidden="true" data-icon="fa-volume-down"></i></td>
+								<td><i class="fa fa-volume-up" aria-hidden="true" data-icon="fa-volume-up"></i></td>
+								<td><i class="fa fa-qrcode" aria-hidden="true" data-icon="fa-qrcode"></i></td>
+								<td><i class="fa fa-barcode" aria-hidden="true" data-icon="fa-barcode"></i></td>
+								<td><i class="fa fa-tag" aria-hidden="true" data-icon="fa-tag"></i></td>
+						   </tr>
+						   <tr>
+						   		<td><i class="fa fa-tags" aria-hidden="true" data-icon="fa-tags"></i></td>
+								<td><i class="fa fa-book" aria-hidden="true" data-icon="fa-book"></i></td>
+								<td><i class="fa fa-bookmark" aria-hidden="true" data-icon="fa-bookmark"></i></td>
+								<td><i class="fa fa-print" aria-hidden="true" data-icon="fa-print"></i></td>
+								<td><i class="fa fa-camera" aria-hidden="true" data-icon="fa-camera"></i></td>
+								<td><i class="fa fa-font" aria-hidden="true" data-icon="fa-font"></i></td>
+								<td><i class="fa fa-bold" aria-hidden="true" data-icon="fa-bold"></i></td>
+								<td><i class="fa fa-italic" aria-hidden="true" data-icon="fa-italic"></i></td>
+								<td><i class="fa fa-text-height" aria-hidden="true" data-icon="fa-text-height"></i></td>
+								<td><i class="fa fa-text-width" aria-hidden="true" data-icon="fa-text-width"></i></td>
+								<td><i class="fa fa-align-left" aria-hidden="true" data-icon="fa-align-left"></i></td>
+								<td><i class="fa fa-align-center" aria-hidden="true" data-icon="fa-align-center"></i></td>
+								<td><i class="fa fa-align-right" aria-hidden="true" data-icon="fa-align-right"></i></td>
+						   </tr>
+						    <tr>
+						   		<td><i class="fa fa-align-justify" aria-hidden="true" data-icon="fa-align-justify"></i></td>
+								<td><i class="fa fa-list" aria-hidden="true" data-icon="fa-list"></i></td>
+								<td><i class="fa fa-dedent" aria-hidden="true" data-icon="fa-dedent"></i></td>
+								<td><i class="fa fa-indent" aria-hidden="true" data-icon="fa-indent"></i></td>
+								<td><i class="fa fa-video-camera" aria-hidden="true" data-icon="fa-video-camera"></i></td>
+								<td><i class="fa fa-photo" aria-hidden="true" data-icon="fa-photo"></i></td>
+								<td><i class="fa fa-pencil" aria-hidden="true" data-icon="fa-pencil"></i></td>
+								<td><i class="fa fa-map-marker" aria-hidden="true" data-icon="fa-map-marker"></i></td>
+								<td><i class="fa fa-adjust" aria-hidden="true" data-icon="fa-adjust"></i></td>
+								<td><i class="fa fa-tint" aria-hidden="true" data-icon="fa-tint"></i></td>
+								<td><i class="fa fa-edit" aria-hidden="true" data-icon="fa-edit"></i></td>
+								<td><i class="fa fa-share-square-o" aria-hidden="true" data-icon="fa-share-square-o"></i></td>
+								<td><i class="fa fa-check-square-o" aria-hidden="true" data-icon="fa-check-square-o"></i></td>
+						   </tr>
+						    <tr>
+						   		<td><i class="fa fa-arrows" aria-hidden="true" data-icon="fa-arrows"></i></td>
+								<td><i class="fa fa-step-backward" aria-hidden="true" data-icon="fa-step-backward"></i></td>
+								<td><i class="fa fa-fast-backward" aria-hidden="true" data-icon="fa-fast-backward"></i></td>
+								<td><i class="fa fa-backward" aria-hidden="true" data-icon="fa-backward"></i></td>
+								<td><i class="fa fa-play" aria-hidden="true" data-icon="fa-play"></i></td>
+								<td><i class="fa fa-pause" aria-hidden="true" data-icon="fa-pause"></i></td>
+								<td><i class="fa fa-stop" aria-hidden="true" data-icon="fa-stop"></i></td>
+								<td><i class="fa fa-forward" aria-hidden="true" data-icon="fa-forward"></i></td>
+								<td><i class="fa fa-fast-forward" aria-hidden="true" data-icon="fa-fast-forward"></i></td>
+								<td><i class="fa fa-step-forward" aria-hidden="true" data-icon="fa-step-forward"></i></td>
+								<td><i class="fa fa-eject" aria-hidden="true" data-icon="fa-eject"></i></td>
+								<td><i class="fa fa-chevron-left" aria-hidden="true" data-icon="fa-chevron-left"></i></td>
+								<td><i class="fa fa-chevron-right" aria-hidden="true" data-icon="fa-chevron-right"></i></td>
+						   </tr>
+						   <tr>
+						   		<td><i class="fa fa-plus-circle" aria-hidden="true" data-icon="fa-plus-circle"></i></td>
+								<td><i class="fa fa-minus-circle" aria-hidden="true" data-icon="fa-minus-circle"></i></td>
+								<td><i class="fa fa-times-circle" aria-hidden="true" data-icon="fa-times-circle"></i></td>
+								<td><i class="fa fa-check-circle" aria-hidden="true" data-icon="fa-check-circle"></i></td>
+								<td><i class="fa fa-question-circle" aria-hidden="true" data-icon="fa-question-circle"></i></td>
+								<td><i class="fa fa-info-circle" aria-hidden="true" data-icon="fa-info-circle"></i></td>
+								<td><i class="fa fa-crosshairs" aria-hidden="true" data-icon="fa-crosshairs"></i></td>
+								<td><i class="fa fa-times-circle-o" aria-hidden="true" data-icon="fa-times-circle-o"></i></td>
+								<td><i class="fa fa-check-circle-o" aria-hidden="true" data-icon="fa-check-circle-o"></i></td>
+								<td><i class="fa fa-ban" aria-hidden="true" data-icon="fa-ban"></i></td>
+								<td><i class="fa fa-arrow-left" aria-hidden="true" data-icon="fa-arrow-left"></i></td>
+								<td><i class="fa fa-arrow-right" aria-hidden="true" data-icon="fa-arrow-right"></i></td>
+								<td><i class="fa fa-arrow-up" aria-hidden="true" data-icon="fa-arrow-up"></i></td>
+						   </tr>
+						   <tr>
+						   		<td><i class="fa fa-arrow-down" aria-hidden="true" data-icon="fa-arrow-down"></i></td>
+								<td><i class="fa fa-mail-forward" aria-hidden="true" data-icon="fa-mail-forward"></i></td>
+								<td><i class="fa fa-expand" aria-hidden="true" data-icon="fa-expand"></i></td>
+								<td><i class="fa fa-compress" aria-hidden="true" data-icon="fa-compress"></i></td>
+								<td><i class="fa fa-plus" aria-hidden="true" data-icon="fa-plus"></i></td>
+								<td><i class="fa fa-minus" aria-hidden="true" data-icon="fa-minus"></i></td>
+								<td><i class="fa fa-asterisk" aria-hidden="true" data-icon="fa-asterisk"></i></td>
+								<td><i class="fa fa-exclamation-circle" aria-hidden="true" data-icon="fa-exclamation-circle"></i></td>
+								<td><i class="fa fa-gift" aria-hidden="true" data-icon="fa-gift"></i></td>
+								<td><i class="fa fa-leaf" aria-hidden="true" data-icon="fa-leaf"></i></td>
+								<td><i class="fa fa-fire" aria-hidden="true" data-icon="fa-fire"></i></td>
+								<td><i class="fa fa-eye" aria-hidden="true" data-icon="fa-eye"></i></td>
+								<td><i class="fa fa-eye-slash" aria-hidden="true" data-icon="fa-eye-slash"></i></td>
+						   </tr>
+						   <tr>
+						   		<td><i class="fa fa-warning" aria-hidden="true" data-icon="fa-warning"></i></td>
+								<td><i class="fa fa-plane" aria-hidden="true" data-icon="fa-plane"></i></td>
+								<td><i class="fa fa-calendar" aria-hidden="true" data-icon="fa-calendar"></i></td>
+								<td><i class="fa fa-random" aria-hidden="true" data-icon="fa-random"></i></td>
+								<td><i class="fa fa-comment" aria-hidden="true" data-icon="fa-comment"></i></td>
+								<td><i class="fa fa-magnet" aria-hidden="true" data-icon="fa-magnet"></i></td>
+								<td><i class="fa fa-chevron-down" aria-hidden="true" data-icon="fa-chevron-down"></i></td>
+								<td><i class="fa fa-retweet" aria-hidden="true" data-icon="fa-retweet"></i></td>
+								<td><i class="fa fa-shopping-cart" aria-hidden="true" data-icon="fa-shopping-cart"></i></td>
+								<td><i class="fa fa-folder" aria-hidden="true" data-icon="fa-folder"></i></td>
+								<td><i class="fa fa-folder-open" aria-hidden="true" data-icon="fa-folder-open"></i></td>
+								<td><i class="fa fa-arrows-v" aria-hidden="true" data-icon="fa-arrows-v"></i></td>
+								<td><i class="fa fa-arrows-h" aria-hidden="true" data-icon="fa-arrows-h"></i></td>
+						   </tr>
+						   <tr>
+						   		<td><i class="fa fa-bar-chart-o" aria-hidden="true" data-icon="fa-bar-chart-o"></i></td>
+								<td><i class="fa fa-twitter-square" aria-hidden="true" data-icon="fa-twitter-square"></i></td>
+								<td><i class="fa fa-facebook-square" aria-hidden="true" data-icon="fa-facebook-square"></i></td>
+								<td><i class="fa fa-camera-retro" aria-hidden="true" data-icon="fa-camera-retro"></i></td>
+								<td><i class="fa fa-key" aria-hidden="true" data-icon="fa-key"></i></td>
+								<td><i class="fa fa-gears" aria-hidden="true" data-icon="fa-gears"></i></td>
+								<td><i class="fa fa-comments" aria-hidden="true" data-icon="fa-comments"></i></td>
+								<td><i class="fa fa-thumbs-o-up" aria-hidden="true" data-icon="fa-thumbs-o-up"></i></td>
+								<td><i class="fa fa-thumbs-o-down" aria-hidden="true" data-icon="fa-thumbs-o-down"></i></td>
+								<td><i class="fa fa-star-half" aria-hidden="true" data-icon="fa-star-half"></i></td>
+								<td><i class="fa fa-heart-o" aria-hidden="true" data-icon="fa-heart-o"></i></td>
+								<td><i class="fa fa-sign-out" aria-hidden="true" data-icon="fa-sign-out"></i></td>
+								<td><i class="fa fa-linkedin-square" aria-hidden="true" data-icon="fa-linkedin-square"></i></td>
+						   </tr>
+						   <tr>
+						   		<td><i class="fa fa-thumb-tack" aria-hidden="true" data-icon="fa-thumb-tack"></i></td>
+								<td><i class="fa fa-external-link" aria-hidden="true" data-icon="fa-external-link"></i></td>
+								<td><i class="fa fa-sign-in" aria-hidden="true" data-icon="fa-sign-in"></i></td>
+								<td><i class="fa fa-trophy" aria-hidden="true" data-icon="fa-trophy"></i></td>
+								<td><i class="fa fa-github-square" aria-hidden="true" data-icon="fa-github-square"></i></td>
+								<td><i class="fa fa-upload" aria-hidden="true" data-icon="fa-upload"></i></td>
+								<td><i class="fa fa-lemon-o" aria-hidden="true" data-icon="fa-lemon-o"></i></td>
+								<td><i class="fa fa-phone" aria-hidden="true" data-icon="fa-phone"></i></td>
+								<td><i class="fa fa-square-o" aria-hidden="true" data-icon="fa-square-o"></i></td>
+								<td><i class="fa fa-bookmark-o" aria-hidden="true" data-icon="fa-bookmark-o"></i></td>
+								<td><i class="fa fa-phone-square" aria-hidden="true" data-icon="fa-phone-square"></i></td>
+								<td><i class="fa fa-twitter" aria-hidden="true" data-icon="fa-twitter"></i></td>
+								<td><i class="fa fa-facebook-f" aria-hidden="true" data-icon="fa-facebook-f"></i></td>
+						   </tr>
+						     <tr>
+						   		<td><i class="fa fa-github" aria-hidden="true" data-icon="fa-github"></i></td>
+								<td><i class="fa fa-unlock" aria-hidden="true" data-icon="fa-unlock"></i></td>
+								<td><i class="fa fa-credit-card" aria-hidden="true" data-icon="fa-credit-card"></i></td>
+								<td><i class="fa fa-feed" aria-hidden="true" data-icon="fa-feed"></i></td>
+								<td><i class="fa fa-hdd-o" aria-hidden="true" data-icon="fa-hdd-o"></i></td>
+								<td><i class="fa fa-bullhorn" aria-hidden="true" data-icon="fa-bullhorn"></i></td>
+								<td><i class="fa fa-bell" aria-hidden="true" data-icon="fa-bell"></i></td>
+								<td><i class="fa fa-certificate" aria-hidden="true" data-icon="fa-certificate"></i></td>
+								<td><i class="fa fa-hand-o-right" aria-hidden="true" data-icon="fa-hand-o-right"></i></td>
+								<td><i class="fa fa-hand-o-left" aria-hidden="true" data-icon="fa-hand-o-left"></i></td>
+								<td><i class="fa fa-hand-o-up" aria-hidden="true" data-icon="fa-hand-o-up"></i></td>
+								<td><i class="fa fa-hand-o-down" aria-hidden="true" data-icon="fa-hand-o-down"></i></td>
+								<td><i class="fa fa-arrow-circle-left" aria-hidden="true" data-icon="fa-arrow-circle-left"></i></td>
+						   </tr>
+						     <tr>
+						   		<td><i class="fa fa-arrow-circle-right" aria-hidden="true" data-icon="fa-arrow-circle-right"></i></td>
+								<td><i class="fa fa-arrow-circle-up" aria-hidden="true" data-icon="fa-arrow-circle-up"></i></td>
+								<td><i class="fa fa-arrow-circle-down" aria-hidden="true" data-icon="fa-arrow-circle-down"></i></td>
+								<td><i class="fa fa-globe" aria-hidden="true" data-icon="fa-globe"></i></td>
+								<td><i class="fa fa-wrench" aria-hidden="true" data-icon="fa-wrench"></i></td>
+								<td><i class="fa fa-tasks" aria-hidden="true" data-icon="fa-tasks"></i></td>
+								<td><i class="fa fa-filter" aria-hidden="true" data-icon="fa-filter"></i></td>
+								<td><i class="fa fa-briefcase" aria-hidden="true" data-icon="fa-briefcase"></i></td>
+								<td><i class="fa fa-arrows-alt" aria-hidden="true" data-icon="fa-arrows-alt"></i></td>
+								<td><i class="fa fa-group" aria-hidden="true" data-icon="fa-group"></i></td>
+								<td><i class="fa fa-chain" aria-hidden="true" data-icon="fa-chain"></i></td>
+								<td><i class="fa fa-cloud" aria-hidden="true" data-icon="fa-cloud"></i></td>
+								<td><i class="fa fa-flask" aria-hidden="true" data-icon="fa-flask"></i></td>
+						   </tr>
+						     <tr>
+						   		<td><i class="fa fa-cut" aria-hidden="true" data-icon="fa-cut"></i></td>
+								<td><i class="fa fa-copy" aria-hidden="true" data-icon="fa-copy"></i></td>
+								<td><i class="fa fa-paperclip" aria-hidden="true" data-icon="fa-paperclip"></i></td>
+								<td><i class="fa fa-save" aria-hidden="true" data-icon="fa-save"></i></td>
+								<td><i class="fa fa-square" aria-hidden="true" data-icon="fa-square"></i></td>
+								<td><i class="fa fa-navicon" aria-hidden="true" data-icon="fa-navicon"></i></td>
+								<td><i class="fa fa-list-ul" aria-hidden="true" data-icon="fa-list-ul"></i></td>
+								<td><i class="fa fa-list-ol" aria-hidden="true" data-icon="fa-list-ol"></i></td>
+								<td><i class="fa fa-strikethrough" aria-hidden="true" data-icon="fa-strikethrough"></i></td>
+								<td><i class="fa fa-underline" aria-hidden="true" data-icon="fa-underline"></i></td>
+								<td><i class="fa fa-table" aria-hidden="true" data-icon="fa-table"></i></td>
+								<td><i class="fa fa-magic" aria-hidden="true" data-icon="fa-magic"></i></td>
+								<td><i class="fa fa-truck" aria-hidden="true" data-icon="fa-truck"></i></td>
+						   </tr>
+						     <tr>
+						   		<td><i class="fa fa-pinterest" aria-hidden="true" data-icon="fa-pinterest"></i></td>
+								<td><i class="fa fa-pinterest-square" aria-hidden="true" data-icon="fa-pinterest-square"></i></td>
+								<td><i class="fa fa-google-plus-square" aria-hidden="true" data-icon="fa-google-plus-square"></i></td>
+								<td><i class="fa fa-google-plus" aria-hidden="true" data-icon="fa-google-plus"></i></td>
+								<td><i class="fa fa-money" aria-hidden="true" data-icon="fa-money"></i></td>
+								<td><i class="fa fa-caret-down" aria-hidden="true" data-icon="fa-caret-down"></i></td>
+								<td><i class="fa fa-caret-up" aria-hidden="true" data-icon="fa-caret-up"></i></td>
+								<td><i class="fa fa-caret-left" aria-hidden="true" data-icon="fa-caret-left"></i></td>
+								<td><i class="fa fa-caret-right" aria-hidden="true" data-icon="fa-caret-right"></i></td>
+								<td><i class="fa fa-columns" aria-hidden="true" data-icon="fa-columns"></i></td>
+								<td><i class="fa fa-unsorted" aria-hidden="true" data-icon="fa-unsorted"></i></td>
+								<td><i class="fa fa-sort-down" aria-hidden="true" data-icon="fa-sort-down"></i></td>
+								<td><i class="fa fa-sort-up" aria-hidden="true" data-icon="fa-sort-up"></i></td>
+						   </tr>
+						</table>
+					</div>
+
+</div>
+<script type="text/javascript">
+	$("td").click(function(){
+		$("td").css("background","");
+		$(this).css("background","#00ff66");
+		$("[name='resourceIcon']").val($(this).children().attr("data-icon"));
+		$("[name='resourceIcon']").css("background","#ffff00");
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head>
+    <meta charset="UTF-8">
+    <title>活动节点查看</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="static/plugins/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="static/css/global.css" media="all">
+    <link rel="stylesheet" href="static/plugins/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <input style="display:none;" id="nodeCode" />
+    </form>
+    <div  id="toolbar" class="layui-btn-group">
+        <button shiro:hasPermission="/nodeResultInfo/edit" class="layui-btn layui-btn-small" id="btn_edit">查看详情</button>
+        <button class="layui-btn layui-btn-small" id="btn_edit1">提交申请-接受申请</button>
+        <button class="layui-btn layui-btn-small" id="btn_edit2">接受申请-电话回访</button>
+        <button class="layui-btn layui-btn-small" id="btn_edit3">电话回访-货前审核</button>
+        <button class="layui-btn layui-btn-small" id="btn_edit4">贷前审核-上门尽调</button>
+        <button class="layui-btn layui-btn-small" id="btn_edit5">上门尽调-材料审批</button>
+        <button class="layui-btn layui-btn-small" id="btn_edit6">材料审批-双方签约</button>
+        <button class="layui-btn layui-btn-small" id="btn_edit7">双方签约-资金拨款</button>
+    </div>
+    <table id="userTable">
+
+    </table>
+
+</div>
+<script type="text/javascript" src="static/plugins/jquery.min.js"></script>
+<script type="text/javascript" src="static/plugins/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="static/plugins/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="static/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="static/admin/common/util.js"></script>
+<script type="text/javascript" src="static/admin/nodeResultInfo/nodeResultInfo.js"></script>
+</body>
+
+</html>

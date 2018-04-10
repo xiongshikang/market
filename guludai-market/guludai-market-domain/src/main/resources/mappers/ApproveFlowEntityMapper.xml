@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.market.domain.dao.ApproveFlowEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.market.domain.entity.ApproveFlowEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="flow_code" jdbcType="CHAR" property="flowCode" />
+		<result column="flow_type" jdbcType="CHAR" property="flowType" />
+		<result column="flow_name" jdbcType="VARCHAR" property="flowName" />
+		<result column="flow_description" jdbcType="VARCHAR" property="flowDescription" />
+		<result column="flow_status" jdbcType="CHAR" property="flowStatus" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<resultMap id="FlowShowRequestMap" type="cn.guludai.market.api.saler.request.FlowShowRequest">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="flow_code" jdbcType="CHAR" property="flowCode" />
+		<result column="apply_code" jdbcType="CHAR" property="apply_code" />
+		<result column="flow_type" jdbcType="CHAR" property="flowType" />
+		<result column="node_name" jdbcType="VARCHAR" property="nodeName" />
+		<result column="node_description" jdbcType="VARCHAR" property="nodeDescription" />
+		<result column="flow_status" jdbcType="CHAR" property="flowStatus" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, flow_code, flow_type, flow_name, flow_description, flow_status, version, create_time,
+		update_time, data_status, disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from approve_flow
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from approve_flow
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.market.domain.entity.ApproveFlowEntity">
+		insert into approve_flow (id, flow_code, flow_type,
+		flow_name, flow_description, flow_status,
+		version, create_time, update_time,
+		data_status, disk_status)
+		values
+		(#{id,jdbcType=BIGINT}, #{flowCode,jdbcType=CHAR}, #{flowType,jdbcType=CHAR},
+		#{flowName,jdbcType=VARCHAR}, #{flowDescription,jdbcType=VARCHAR}, #{flowStatus,jdbcType=CHAR},
+		#{version,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+		#{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.market.domain.entity.ApproveFlowEntity">
+		insert into approve_flow
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="flowCode != null">
+				flow_code,
+			</if>
+			<if test="flowType != null">
+				flow_type,
+			</if>
+			<if test="flowName != null">
+				flow_name,
+			</if>
+			<if test="flowDescription != null">
+				flow_description,
+			</if>
+			<if test="flowStatus != null">
+				flow_status,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="flowCode != null">
+				#{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="flowType != null">
+				#{flowType,jdbcType=CHAR},
+			</if>
+			<if test="flowName != null">
+				#{flowName,jdbcType=VARCHAR},
+			</if>
+			<if test="flowDescription != null">
+				#{flowDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="flowStatus != null">
+				#{flowStatus,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.market.domain.entity.ApproveFlowEntity">
+		update approve_flow
+		<set>
+			<if test="flowCode != null">
+				flow_code = #{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="flowType != null">
+				flow_type = #{flowType,jdbcType=CHAR},
+			</if>
+			<if test="flowName != null">
+				flow_name = #{flowName,jdbcType=VARCHAR},
+			</if>
+			<if test="flowDescription != null">
+				flow_description = #{flowDescription,jdbcType=VARCHAR},
+			</if>
+			<if test="flowStatus != null">
+				flow_status = #{flowStatus,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.market.domain.entity.ApproveFlowEntity">
+		update approve_flow
+		set flow_code = #{flowCode,jdbcType=CHAR},
+		flow_type = #{flowType,jdbcType=CHAR},
+		flow_name = #{flowName,jdbcType=VARCHAR},
+		flow_description = #{flowDescription,jdbcType=VARCHAR},
+		flow_status = #{flowStatus,jdbcType=CHAR},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time =
+		#{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<!-- 根据类型查询可用的审批流程 -->
+	<select id="selectFlowByStatus" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		from approve_flow
+		WHERE
+		flow_status = 'Y'
+		AND
+		flow_type = #{flowType,jdbcType=CHAR}
+	</select>
+</mapper>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.market.domain.dao.ApproveFlowUserEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.market.domain.entity.ApproveFlowUserEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="code" jdbcType="CHAR" property="code" />
+		<result column="user_code" jdbcType="CHAR" property="userCode" />
+		<result column="flow_code" jdbcType="CHAR" property="flowCode" />
+		<result column="node_code" jdbcType="CHAR" property="nodeCode" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, code, user_code, flow_code, node_code, version, create_time, update_time, data_status,
+		disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from approve_flow_user
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from approve_flow_user
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.market.domain.entity.ApproveFlowUserEntity">
+		insert into approve_flow_user (id, code, user_code,
+		flow_code, node_code, version,
+		create_time, update_time, data_status,
+		disk_status)
+		values (#{id,jdbcType=BIGINT}, #{code,jdbcType=CHAR}, #{userCode,jdbcType=CHAR},
+		#{flowCode,jdbcType=CHAR}, #{nodeCode,jdbcType=CHAR}, #{version,jdbcType=BIGINT},
+		#{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{dataStatus,jdbcType=CHAR},
+		#{diskStatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.market.domain.entity.ApproveFlowUserEntity">
+		insert into approve_flow_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="code != null">
+				code,
+			</if>
+			<if test="userCode != null">
+				user_code,
+			</if>
+			<if test="flowCode != null">
+				flow_code,
+			</if>
+			<if test="nodeCode != null">
+				node_code,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=CHAR},
+			</if>
+			<if test="userCode != null">
+				#{userCode,jdbcType=CHAR},
+			</if>
+			<if test="flowCode != null">
+				#{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="nodeCode != null">
+				#{nodeCode,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.market.domain.entity.ApproveFlowUserEntity">
+		update approve_flow_user
+		<set>
+			<if test="code != null">
+				code = #{code,jdbcType=CHAR},
+			</if>
+			<if test="userCode != null">
+				user_code = #{userCode,jdbcType=CHAR},
+			</if>
+			<if test="flowCode != null">
+				flow_code = #{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="nodeCode != null">
+				node_code = #{nodeCode,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.market.domain.entity.ApproveFlowUserEntity">
+		update approve_flow_user
+		set code = #{code,jdbcType=CHAR},
+		user_code = #{userCode,jdbcType=CHAR},
+		flow_code = #{flowCode,jdbcType=CHAR},
+		node_code = #{nodeCode,jdbcType=CHAR},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<!-- 批量册除节点上的分配人员 -->
+	<update id="deleteFlowUserByNodeCode" >
+		update   approve_flow_user set data_status = 'N' ,version = version+1 , update_time = NOW() WHERE node_code = #{nodeCode}
+	</update>
+	<!-- 通过节点编号与用户编号查询是否存在分配人员数据 -->
+	<select id="selectFlowUserByUserCodeAndNodeCode" resultType="java.lang.Integer">
+		SELECT COUNT(1) FROM approve_flow_user WHERE user_code = #{userCode} AND node_code = #{nodeCode}
+	</select>
+	<!-- 修改成未册除状态 -->
+	<update id="insertFlowUser" >
+		UPDATE approve_flow_user SET disk_status = 'Y' , 
+		  data_status = 'Y',
+		  version = version+1 ,
+		  update_time = NOW() 
+		 where user_code = #{userCode} AND node_code = #{nodeCode}
+	</update>
+	<!-- 通过节点编号查询分配的用户 -->
+	<select id="selectFlowUserByNodeCode" resultMap="BaseResultMap">
+		SELECT * FROM approve_flow_user WHERE node_code = #{nodeCode} AND data_status = 'Y' AND disk_status = 'Y'
+	</select>
+</mapper>

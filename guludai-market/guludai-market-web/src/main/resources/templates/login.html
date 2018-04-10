@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>谨微数据 : 运营平台</title>
+    <link rel="stylesheet" href="static/plugins/layui/css/layui.css" />
+    <link rel="stylesheet" href="static/css/login2.css" />
+    <script type="text/javascript" src="static/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="static/plugins/layui/layui.js"></script>
+    <script type="text/javascript" src="static/admin/common/util.js"></script>
+</head>
+<body class="beg-login-bg">
+<div class="beg-login-box">
+    <header>
+        <h1>谨微数据 : 运营平台</h1>
+        <div class="errorMsg">
+            <span th:text="${msg}"></span>
+        </div>
+
+    </header>
+
+</div>
+<div class="login" style="margin-top:50px;">
+    <div class="header">
+        <div class="switch" id="switch">
+            <a class="switch_btn_focus" id="switch_qlogin" href="javascript:void(0);" tabindex="7">快速登录</a>
+            <!-- <a class="switch_btn" id="switch_login" href="javascript:void(0);" tabindex="8">快速注册</a> -->
+            <div class="switch_bottom" id="switch_bottom" style="position: absolute; width: 64px; left: 0px;"></div>
+        </div>
+    </div>
+    <div class="web_qr_login" id="web_qr_login" style="display: block; height: 235px;">
+        <!--登录-->
+        <div class="web_login" id="web_login">
+            <div class="login-box">
+                <div class="login_form">
+                    <form action="" name="loginform" accept-charset="utf-8" id="login_form" class="loginForm"
+                          method="post">
+                        <input type="hidden" name="did" value="0"/>
+                        <input type="hidden" name="to" value="log"/>
+                        <div class="uinArea" id="uinArea">
+                            <label class="input-tips" for="username">帐号：</label>
+                            <div class="inputOuter" id="uArea">
+                                <input type="text" onkeypress="javascript:return gosearch(1);" name="userName"
+                                       id="username" class="inputstyle"/>
+                            </div>
+                        </div>
+                        <div class="pwdArea" id="pwdArea">
+                            <label class="input-tips" for="password">密码：</label>
+                            <div class="inputOuter" id="pArea">
+                                <input onkeypress="javascript:return gosearch(2);" name="password" type="password"
+                                       id="password" class="inputstyle"/>
+                            </div>
+                        </div>
+                        <div style="padding-left:50px;margin-top:20px;">
+                            <input type="submit" value="登 录" style="width:150px;" class="button_blue"/></div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+        <!--登录end-->
+    </div>
+
+</div>
+<div id="footer">
+    <a>关于我们@tell 021-63332382 &nbsp &nbsp|&nbsp &nbsp</a>
+    <a>Copyright 2018 © 上海谨微数据服务有限公司 保留所有权利 沪ICP备17048366号-1</a>
+</div>
+<script>
+    function loginFn() {
+        var username = $('#username').val();
+        var password = $('#password').val();
+        var data = {};
+        data.userName = username;
+        data.password = password;
+        doAjax("/market/login", function(data) {
+            if (data.code == 200) {
+                window.location.href = "/market/index";
+            } else {
+                var message = data.message;
+                layui.use('layer', function() {
+                    layer = layui.layer; //独立版的layer无需执行这一句
+                    layer.open({
+                        type : 1,
+                        offset : 'auto',
+                        content : '<div style="padding:20px 80px">'
+                        + message + '</div>',
+                        btn : '确定',
+                        btnAlign : 'c',
+                        shade : 0,
+                        yes : function() {
+                            layer.closeAll();
+                        }
+                    });
+                });
+                $('#username').val('');
+                $('#password').val('');
+            }
+        }, JSON.stringify({
+            'data' : data
+        }), "POST");
+    }
+
+    function gosearch(type) {
+        if (window.event.keyCode == 13) {
+            if (type == 1) {
+                $('#password').focus();
+                return false;
+            }
+            if (type == 2) {
+                if ($('#username').val() == "") {
+                    $('#username').focus();
+                    $('#username').html("<font color='red'><b>登陆名不能为空</b></font>");
+                    return false;
+                }
+                loginFn();
+                return true;
+            }
+
+        }
+    }
+    function keydownsubmintFn(event, type) {
+        if (event.keyCode == "13") {
+            if (type == 2) {
+                loginFn();
+            } else if (type == 1) {
+                document.getElementById("password").focus();
+            }
+        }
+    }
+</script>
+</body>
+
+</html>

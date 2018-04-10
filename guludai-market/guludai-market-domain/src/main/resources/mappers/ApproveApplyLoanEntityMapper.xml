@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.market.domain.dao.ApproveApplyLoanEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.market.domain.entity.ApproveApplyLoanEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="loan_code" jdbcType="CHAR" property="loanCode" />
+		<result column="loan_money" jdbcType="DECIMAL" property="loanMoney" />
+		<result column="loan_actual_money" jdbcType="DECIMAL" property="loanActualMoney" />
+		<result column="interest_start_time" jdbcType="TIMESTAMP" property="interestStartTime" />
+		<result column="interest_end_time" jdbcType="TIMESTAMP" property="interestEndTime" />
+		<result column="flow_code" jdbcType="CHAR" property="flowCode" />
+		<result column="apply_code" jdbcType="CHAR" property="applyCode" />
+		<result column="activiti_code" jdbcType="CHAR" property="activitiCode" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, loan_code, loan_money, loan_actual_money, interest_start_time, interest_end_time,
+		flow_code, apply_code, activiti_code, version, create_time, update_time, data_status,
+		disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from approve_apply_loan
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from approve_apply_loan
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.market.domain.entity.ApproveApplyLoanEntity">
+		insert into approve_apply_loan (id, loan_code, loan_money,
+		loan_actual_money, interest_start_time, interest_end_time,
+		flow_code, apply_code, activiti_code,
+		version, create_time, update_time,
+		data_status, disk_status)
+		values (#{id,jdbcType=BIGINT}, #{loanCode,jdbcType=CHAR}, #{loanMoney,jdbcType=DECIMAL},
+		#{loanActualMoney,jdbcType=DECIMAL}, #{interestStartTime,jdbcType=TIMESTAMP}, #{interestEndTime,jdbcType=TIMESTAMP},
+		#{flowCode,jdbcType=CHAR}, #{applyCode,jdbcType=CHAR}, #{activitiCode,jdbcType=CHAR},
+		#{version,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+		#{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.market.domain.entity.ApproveApplyLoanEntity">
+		insert into approve_apply_loan
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="loanCode != null">
+				loan_code,
+			</if>
+			<if test="loanMoney != null">
+				loan_money,
+			</if>
+			<if test="loanActualMoney != null">
+				loan_actual_money,
+			</if>
+			<if test="interestStartTime != null">
+				interest_start_time,
+			</if>
+			<if test="interestEndTime != null">
+				interest_end_time,
+			</if>
+			<if test="flowCode != null">
+				flow_code,
+			</if>
+			<if test="applyCode != null">
+				apply_code,
+			</if>
+			<if test="activitiCode != null">
+				activiti_code,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="loanCode != null">
+				#{loanCode,jdbcType=CHAR},
+			</if>
+			<if test="loanMoney != null">
+				#{loanMoney,jdbcType=DECIMAL},
+			</if>
+			<if test="loanActualMoney != null">
+				#{loanActualMoney,jdbcType=DECIMAL},
+			</if>
+			<if test="interestStartTime != null">
+				#{interestStartTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="interestEndTime != null">
+				#{interestEndTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="flowCode != null">
+				#{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="applyCode != null">
+				#{applyCode,jdbcType=CHAR},
+			</if>
+			<if test="activitiCode != null">
+				#{activitiCode,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.market.domain.entity.ApproveApplyLoanEntity">
+		update approve_apply_loan
+		<set>
+			<if test="loanMoney != null">
+				loan_money = #{loanMoney,jdbcType=DECIMAL},
+			</if>
+			<if test="loanActualMoney != null">
+				loan_actual_money = #{loanActualMoney,jdbcType=DECIMAL},
+			</if>
+			<if test="interestStartTime != null">
+				interest_start_time = #{interestStartTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="interestEndTime != null">
+				interest_end_time = #{interestEndTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="flowCode != null">
+				flow_code = #{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="applyCode != null">
+				apply_code = #{applyCode,jdbcType=CHAR},
+			</if>
+			<if test="activitiCode != null">
+				activiti_code = #{activitiCode,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				version = version + 1,
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = NOW(),
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where loan_code = #{loan_code}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.market.domain.entity.ApproveApplyLoanEntity">
+		update approve_apply_loan
+		set loan_code = #{loanCode,jdbcType=CHAR},
+		loan_money = #{loanMoney,jdbcType=DECIMAL},
+		loan_actual_money = #{loanActualMoney,jdbcType=DECIMAL},
+		interest_start_time = #{interestStartTime,jdbcType=TIMESTAMP},
+		interest_end_time = #{interestEndTime,jdbcType=TIMESTAMP},
+		flow_code = #{flowCode,jdbcType=CHAR},
+		apply_code = #{applyCode,jdbcType=CHAR},
+		activiti_code = #{activitiCode,jdbcType=CHAR},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<!-- 册除(申请审批放款信息) -->
+	<update id="deleteByLoanCode" >
+		UPDATE approve_apply_loan  SET data_status = 'N' WHERE loan_code = #{loanCode} 	
+	</update>
+	<!-- 通过流水号查询审批放款信息 -->
+	<select id="selectApplyLoanApplyCode"  resultMap="BaseResultMap" >
+		SELECT 
+		 <include refid="Base_Column_List" />
+		 FROM approve_apply_loan WHERE apply_code = #{applyCode}
+	</select>
+	
+</mapper>

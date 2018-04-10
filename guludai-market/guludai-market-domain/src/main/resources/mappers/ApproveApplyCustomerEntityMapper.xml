@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.market.domain.dao.ApproveApplyCustomerEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.market.domain.entity.ApproveApplyCustomerEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="customer_code" jdbcType="CHAR" property="customerCode" />
+		<result column="customer_idcard" jdbcType="VARCHAR" property="customerIdcard" />
+		<result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+		<result column="flow_code" jdbcType="CHAR" property="flowCode" />
+		<result column="apply_code" jdbcType="CHAR" property="applyCode" />
+		<result column="activiti_code" jdbcType="CHAR" property="activitiCode" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, customer_code, customer_idcard, customer_name, flow_code, apply_code, activiti_code,
+		version, create_time, update_time, data_status, disk_status
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from approve_apply_customer
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from approve_apply_customer
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.market.domain.entity.ApproveApplyCustomerEntity">
+		insert into approve_apply_customer (id, customer_code, customer_idcard,
+		customer_name, flow_code, apply_code,
+		activiti_code, version, create_time,
+		update_time, data_status, disk_status
+		)
+		values (#{id,jdbcType=BIGINT}, #{customerCode,jdbcType=CHAR}, #{customerIdcard,jdbcType=VARCHAR},
+		#{customerName,jdbcType=VARCHAR}, #{flowCode,jdbcType=CHAR}, #{applyCode,jdbcType=CHAR},
+		#{activitiCode,jdbcType=CHAR}, #{version,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.market.domain.entity.ApproveApplyCustomerEntity">
+		insert into approve_apply_customer
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="customerCode != null">
+				customer_code,
+			</if>
+			<if test="customerIdcard != null">
+				customer_idcard,
+			</if>
+			<if test="customerName != null">
+				customer_name,
+			</if>
+			<if test="flowCode != null">
+				flow_code,
+			</if>
+			<if test="applyCode != null">
+				apply_code,
+			</if>
+			<if test="activitiCode != null">
+				activiti_code,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="customerCode != null">
+				#{customerCode,jdbcType=CHAR},
+			</if>
+			<if test="customerIdcard != null">
+				#{customerIdcard,jdbcType=VARCHAR},
+			</if>
+			<if test="customerName != null">
+				#{customerName,jdbcType=VARCHAR},
+			</if>
+			<if test="flowCode != null">
+				#{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="applyCode != null">
+				#{applyCode,jdbcType=CHAR},
+			</if>
+			<if test="activitiCode != null">
+				#{activitiCode,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.market.domain.entity.ApproveApplyCustomerEntity">
+		update approve_apply_customer
+		<set>
+			<if test="customerIdcard != null and customerIdcard!='' ">
+				customer_idcard = #{customerIdcard,jdbcType=VARCHAR},
+			</if>
+			<if test="customerName != null and customerName!='' ">
+				customer_name = #{customerName,jdbcType=VARCHAR},
+			</if>
+			<if test="flowCode != null">
+				flow_code = #{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="applyCode != null">
+				apply_code = #{applyCode,jdbcType=CHAR},
+			</if>
+			<if test="activitiCode != null">
+				activiti_code = #{activitiCode,jdbcType=CHAR},
+			</if>
+			<if test="version == null">
+				version = version+1,
+			</if>
+			<if test="updateTime == null">
+				update_time = NOW(),
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where customer_code = #{customerCode,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.market.domain.entity.ApproveApplyCustomerEntity">
+		update approve_apply_customer
+		set customer_code = #{customerCode,jdbcType=CHAR},
+		customer_idcard = #{customerIdcard,jdbcType=VARCHAR},
+		customer_name = #{customerName,jdbcType=VARCHAR},
+		flow_code = #{flowCode,jdbcType=CHAR},
+		apply_code = #{applyCode,jdbcType=CHAR},
+		activiti_code = #{activitiCode,jdbcType=CHAR},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<!-- 通过身份证号查找申请审批客户信息 -->
+	<select id="selectApplyCustomerByCustomerIdcard" resultMap="BaseResultMap" >
+		SELECT 
+			<include refid="Base_Column_List" />
+		 FROM approve_apply_customer  WHERE customer_idcard = #{customerIdcard} AND data_status = 'Y' AND disk_status = 'Y' 
+	</select>
+	<!-- 通过流水编号查询申请审批客户信息 -->
+	<select id="selectApplyCustomerByApplyCode" resultMap="BaseResultMap"  >
+		SELECT 
+			<include refid="Base_Column_List" />
+		 FROM approve_apply_customer  where apply_code = #{applyCode} AND data_status = 'Y' AND disk_status = 'Y'
+	</select>
+</mapper>

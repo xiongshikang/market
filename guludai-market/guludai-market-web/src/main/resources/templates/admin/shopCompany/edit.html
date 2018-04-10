@@ -1,0 +1,32 @@
+
+		<div style="margin: 15px;">
+			<form class="layui-form" action="">
+				<input type="text" style="display: none;"  name="companyCode" />	
+				<div class="layui-form-item">
+					<label class="layui-form-label">企业名</label>
+					<div class="layui-input-block">
+						<input type="text" lay-verify="required" name="companyName" placeholder="企业名" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">电话</label>
+					<div class="layui-input-block">
+						<input type="text"  name="phone" placeholder="联系电话" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">邮箱</label>
+					<div class="layui-input-block">
+						<input type="text"  name="mail" placeholder="企业邮箱" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">地址</label>
+					<div class="layui-input-block">
+						<input type="text" name="address"  placeholder="企业地址" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<button lay-filter="edit" lay-submit style="display: none;"></button>
+			</form>
+		</div>

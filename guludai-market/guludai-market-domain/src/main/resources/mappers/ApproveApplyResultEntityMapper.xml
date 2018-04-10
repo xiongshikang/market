@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.market.domain.dao.ApproveApplyResultEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.market.domain.entity.ApproveApplyResultEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="approve_start_time" jdbcType="TIMESTAMP" property="approveStartTime" />
+		<result column="approve_end_time" jdbcType="TIMESTAMP" property="approveEndTime" />
+		<result column="approve_status" jdbcType="CHAR" property="approveStatus" />
+		<result column="approve_result" jdbcType="CHAR" property="approveResult" />
+		<result column="apply_time" jdbcType="TIMESTAMP" property="applyTime" />
+		<result column="apply_code" jdbcType="CHAR" property="applyCode" />
+		<result column="activiti_code" jdbcType="CHAR" property="activitiCode" />
+		<result column="flow_code" jdbcType="CHAR" property="flowCode" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+		<result column="shop_code" jdbcType="CHAR" property="shopCode" />
+		<result column="node_code" jdbcType="CHAR" property="nodeCode" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, approve_start_time, approve_end_time, approve_status, approve_result, apply_time,
+		apply_code, activiti_code, flow_code, version, create_time, update_time, data_status,
+		disk_status,shop_code,node_code
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from approve_apply_result
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from approve_apply_result
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.market.domain.entity.ApproveApplyResultEntity">
+		insert into approve_apply_result (id, approve_start_time, approve_end_time,
+		approve_status, approve_result, apply_time,
+		apply_code, activiti_code, flow_code,
+		version, create_time, update_time,
+		data_status, disk_status,shop_code,node_code)
+		values (#{id,jdbcType=BIGINT}, #{approveStartTime,jdbcType=TIMESTAMP}, #{approveEndTime,jdbcType=TIMESTAMP},
+		#{approveStatus,jdbcType=CHAR}, #{approveResult,jdbcType=CHAR}, #{applyTime,jdbcType=TIMESTAMP},
+		#{applyCode,jdbcType=CHAR}, #{activitiCode,jdbcType=CHAR}, #{flowCode,jdbcType=CHAR},
+		#{version,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+		#{dataStatus,jdbcType=CHAR},
+		#{diskStatus,jdbcType=CHAR},#{shopCode,jdbcType=CHAR},#{nodeCode,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.market.domain.entity.ApproveApplyResultEntity">
+		insert into approve_apply_result
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="approveStartTime != null">
+				approve_start_time,
+			</if>
+			<if test="approveEndTime != null">
+				approve_end_time,
+			</if>
+			<if test="approveStatus != null">
+				approve_status,
+			</if>
+			<if test="approveResult != null">
+				approve_result,
+			</if>
+			<if test="applyTime != null">
+				apply_time,
+			</if>
+			<if test="applyCode != null">
+				apply_code,
+			</if>
+			<if test="activitiCode != null">
+				activiti_code,
+			</if>
+			<if test="flowCode != null">
+				flow_code,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+			<if test="shopCode != null">
+				shop_code,
+			</if>
+			<if test="nodeCode != null">
+				node_code,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="approveStartTime != null">
+				#{approveStartTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="approveEndTime != null">
+				#{approveEndTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="approveStatus != null">
+				#{approveStatus,jdbcType=CHAR},
+			</if>
+			<if test="approveResult != null">
+				#{approveResult,jdbcType=CHAR},
+			</if>
+			<if test="applyTime != null">
+				#{applyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applyCode != null">
+				#{applyCode,jdbcType=CHAR},
+			</if>
+			<if test="activitiCode != null">
+				#{activitiCode,jdbcType=CHAR},
+			</if>
+			<if test="flowCode != null">
+				#{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+			<if test="shopCode !=null">
+				#{shopCode,jdbcType=CHAR}
+			</if>
+			<if test="nodeCode !=null">
+				#{nodeCode,jdbcType=CHAR}
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.market.domain.entity.ApproveApplyResultEntity">
+		update approve_apply_result
+		<set>
+			<if test="approveStartTime != null">
+				approve_start_time = #{approveStartTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="approveEndTime != null">
+				approve_end_time = #{approveEndTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="approveStatus != null">
+				approve_status = #{approveStatus,jdbcType=CHAR},
+			</if>
+			<if test="approveResult != null">
+				approve_result = #{approveResult,jdbcType=CHAR},
+			</if>
+			<if test="applyTime != null">
+				apply_time = #{applyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="applyCode != null">
+				apply_code = #{applyCode,jdbcType=CHAR},
+			</if>
+			<if test="activitiCode != null">
+				activiti_code = #{activitiCode,jdbcType=CHAR},
+			</if>
+			<if test="flowCode != null">
+				flow_code = #{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+			<if test="shopCode !=null">
+				shop_code = #{shopCode,jdbcType=CHAR},
+			</if>
+			<if test="nodeCode != null">
+				node_code = #{nodeCode,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.market.domain.entity.ApproveApplyResultEntity">
+		update approve_apply_result
+		set approve_start_time = #{approveStartTime,jdbcType=TIMESTAMP},
+		approve_end_time =
+		#{approveEndTime,jdbcType=TIMESTAMP},
+		approve_status = #{approveStatus,jdbcType=CHAR},
+		approve_result = #{approveResult,jdbcType=CHAR},
+		apply_time = #{applyTime,jdbcType=TIMESTAMP},
+		apply_code =
+		#{applyCode,jdbcType=CHAR},
+		activiti_code = #{activitiCode,jdbcType=CHAR},
+		flow_code = #{flowCode,jdbcType=CHAR},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR},
+		shop_code = #{shopCode,jdbcType=CHAR},
+		node_code =
+		#{nodeCode,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<!-- 查询申请审批数据 -->
+	<select id="selectApplyResultList" parameterType="cn.guludai.market.web.request.ApproveApplyResultReq" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from approve_apply_result
+		where
+		data_status = 'Y'
+		and disk_status = 'Y'
+		<if test="approveStartTime != null and approveStartTime!='' ">
+			and approve_start_time = #{approveStartTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="approveEndTime != null and approveEndTime!='' ">
+			and approve_end_time = #{approveEndTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="approveStatus != null and approveStatus!='' ">
+			and approve_status = #{approveStatus,jdbcType=CHAR}
+		</if>
+		<if test="approveResult != null and approveResult!='' ">
+			and approve_result = #{approveResult,jdbcType=CHAR}
+		</if>
+		<if test="applyTime != null and applyTime!='' ">
+			and apply_time = #{applyTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="applyCode != null and applyCode!='' ">
+			and apply_code = #{applyCode,jdbcType=CHAR}
+		</if>
+		<if test="activitiCode != null and activitiCode!='' ">
+			and activiti_code = #{activitiCode,jdbcType=CHAR}
+		</if>
+		<if test="flowCode != null and flowCode!='' ">
+			and flow_code = #{flowCode,jdbcType=CHAR}
+		</if>
+		<if test="limit != null and limit != '' ">
+			limit #{limit} OFFSET #{offset}
+		</if>
+	</select>
+	<!-- 查询申请审批数据总数 -->
+	<select id="selectApplyResultListCount" parameterType="cn.guludai.market.web.request.ApproveApplyResultReq" resultType="java.lang.Integer">
+		select
+		count(1)
+		from approve_apply_result
+		where
+		data_status = 'Y'
+		and disk_status = 'Y'
+		<if test="approveStartTime != null and approveStartTime!='' ">
+			and approve_start_time = #{approveStartTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="approveEndTime != null and approveEndTime!='' ">
+			and approve_end_time = #{approveEndTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="approveStatus != null and approveStatus!='' ">
+			and approve_status = #{approveStatus,jdbcType=CHAR}
+		</if>
+		<if test="approveResult != null and approveResult!='' ">
+			and approve_result = #{approveResult,jdbcType=CHAR}
+		</if>
+		<if test="applyTime != null and applyTime!='' ">
+			and apply_time = #{applyTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="applyCode != null and applyCode!='' ">
+			and apply_code = #{applyCode,jdbcType=CHAR}
+		</if>
+		<if test="activitiCode != null and activitiCode!='' ">
+			and activiti_code = #{activitiCode,jdbcType=CHAR}
+		</if>
+		<if test="flowCode != null and flowCode!='' ">
+			and flow_code = #{flowCode,jdbcType=CHAR}
+		</if>
+	</select>
+
+	<!-- -->
+	<update id="updateApplyResultByApplyCode">
+		update approve_apply_result set approve_start_time = #{approveStartTime,jdbcType=TIMESTAMP},
+		approve_status = #{approveStatus,jdbcType=CHAR},
+		approve_result =
+		#{approveResult,jdbcType=CHAR}
+		where apply_code = #{applyCode,jdbcType=CHAR}
+	</update>
+
+	<!-- 更新申请审批信息 -->
+	<select id="selectApproveApplyResultByApplyCode" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM approve_apply_result r WHERE r.apply_code = #{applyCode}
+	</select>
+
+	<!-- 通过流水单编号更新 -->
+	<update id="updateByApplyCode" parameterType="cn.guludai.market.domain.entity.ApproveApplyResultEntity">
+		update approve_apply_result
+		<set>
+			<if test="approveStartTime != null">
+				approve_start_time = #{approveStartTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="approveEndTime != null">
+				approve_end_time = #{approveEndTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="approveStatus != null">
+				approve_status = #{approveStatus,jdbcType=CHAR},
+			</if>
+			<if test="approveResult != null">
+				approve_result = #{approveResult,jdbcType=CHAR},
+			</if>
+			<if test="applyTime != null">
+				apply_time = #{applyTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="activitiCode != null">
+				activiti_code = #{activitiCode,jdbcType=CHAR},
+			</if>
+			<if test="flowCode != null">
+				flow_code = #{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="nodeCode != null">
+				node_code = #{nodeCode,jdbcType=CHAR},
+			</if>
+			<if test="version == null">
+				version = version + 1,
+			</if>
+			<if test="updateTime != null">
+				update_time = NOW(),
+			</if>
+			<if test="shopCode!=null and shopCode!='' ">
+				shop_code = #{shopCode,jdbcType=CHAR},
+			</if>
+		</set>
+		where apply_code = #{applyCode}
+	</update>
+
+	<!-- 通过节点编号查询当前节点分页数据 -->
+	<select id="selectNodeInfoByNodeCodePage" parameterType="cn.guludai.market.web.request.ApproveApplyResultReq" resultMap="BaseResultMap">
+		SELECT * FROM approve_apply_result WHERE node_code = #{nodeCode} and approve_status <![CDATA[ <> ]]>
+		'Y'
+		ORDER BY create_time DESC
+		<if test="limit != null and limit != '' ">
+			limit #{limit} OFFSET #{offset}
+		</if>
+	</select>
+
+	<!-- 通过节点编号查询当前节点分页总数 -->
+	<select id="selectNodeInfoByNodeCodePageCount" parameterType="cn.guludai.market.web.request.ApproveApplyResultReq" resultType="java.lang.Integer">
+		SELECT count(1) FROM approve_apply_result WHERE node_code = #{nodeCode} and approve_status <![CDATA[ <> ]]>
+		'Y'
+	</select>
+
+	<!-- 通过节点编号查询被拒绝节点分页数据 -->
+	<select id="selectNodeInfoForResultIsNo" parameterType="cn.guludai.market.web.request.ApproveApplyResultReq" resultMap="BaseResultMap">
+		SELECT * FROM approve_apply_result WHERE node_code = #{nodeCode} and approve_status = 'Y' AND approve_result = 'N'
+		ORDER BY create_time DESC
+		<if test="limit != null and limit != '' ">
+			limit #{limit} OFFSET #{offset}
+		</if>
+	</select>
+
+	<!-- 通过节点编号查询被拒绝节点分页数据总数 -->
+	<select id="selectNodeInfoForResultIsNoCount" parameterType="cn.guludai.market.web.request.ApproveApplyResultReq" resultType="java.lang.Integer">
+		SELECT count(1) FROM approve_apply_result WHERE node_code =
+		#{nodeCode} and approve_status = 'Y' AND approve_result = 'N'
+	</select>
+
+</mapper>

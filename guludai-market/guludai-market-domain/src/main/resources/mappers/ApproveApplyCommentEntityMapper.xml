@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.guludai.market.domain.dao.ApproveApplyCommentEntityMapper">
+	<resultMap id="BaseResultMap" type="cn.guludai.market.domain.entity.ApproveApplyCommentEntity">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="comment_code" jdbcType="CHAR" property="commentCode" />
+		<result column="user_code" jdbcType="CHAR" property="userCode" />
+		<result column="activiti_code" jdbcType="CHAR" property="activitiCode" />
+		<result column="apply_code" jdbcType="CHAR" property="applyCode" />
+		<result column="flow_code" jdbcType="CHAR" property="flowCode" />
+		<result column="node_code" jdbcType="CHAR" property="nodeCode" />
+		<result column="version" jdbcType="BIGINT" property="version" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="data_status" jdbcType="CHAR" property="dataStatus" />
+		<result column="disk_status" jdbcType="CHAR" property="diskStatus" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.guludai.market.domain.entity.ApproveApplyCommentEntity">
+		<result column="comment" jdbcType="LONGVARCHAR" property="comment" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, comment_code, user_code, activiti_code, apply_code, flow_code, node_code, version,
+		create_time, update_time, data_status, disk_status
+	</sql>
+	<sql id="Blob_Column_List">
+		comment
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from approve_apply_comment
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from approve_apply_comment
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="cn.guludai.market.domain.entity.ApproveApplyCommentEntity">
+		insert into approve_apply_comment (id, comment_code, user_code,
+		activiti_code, apply_code, flow_code,
+		node_code, version, create_time,
+		update_time, data_status, disk_status,
+		comment)
+		values (#{id,jdbcType=BIGINT}, #{commentCode,jdbcType=CHAR}, #{userCode,jdbcType=CHAR},
+		#{activitiCode,jdbcType=CHAR}, #{applyCode,jdbcType=CHAR}, #{flowCode,jdbcType=CHAR},
+		#{nodeCode,jdbcType=CHAR}, #{version,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP}, #{dataStatus,jdbcType=CHAR}, #{diskStatus,jdbcType=CHAR},
+		#{comment,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.guludai.market.domain.entity.ApproveApplyCommentEntity">
+		insert into approve_apply_comment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="commentCode != null">
+				comment_code,
+			</if>
+			<if test="userCode != null">
+				user_code,
+			</if>
+			<if test="activitiCode != null">
+				activiti_code,
+			</if>
+			<if test="applyCode != null">
+				apply_code,
+			</if>
+			<if test="flowCode != null">
+				flow_code,
+			</if>
+			<if test="nodeCode != null">
+				node_code,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			<if test="diskStatus != null">
+				disk_status,
+			</if>
+			<if test="comment != null">
+				comment,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="commentCode != null">
+				#{commentCode,jdbcType=CHAR},
+			</if>
+			<if test="userCode != null">
+				#{userCode,jdbcType=CHAR},
+			</if>
+			<if test="activitiCode != null">
+				#{activitiCode,jdbcType=CHAR},
+			</if>
+			<if test="applyCode != null">
+				#{applyCode,jdbcType=CHAR},
+			</if>
+			<if test="flowCode != null">
+				#{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="nodeCode != null">
+				#{nodeCode,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				#{diskStatus,jdbcType=CHAR},
+			</if>
+			<if test="comment != null">
+				#{comment,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.guludai.market.domain.entity.ApproveApplyCommentEntity">
+		update approve_apply_comment
+		<set>
+			<if test="commentCode != null">
+				comment_code = #{commentCode,jdbcType=CHAR},
+			</if>
+			<if test="userCode != null">
+				user_code = #{userCode,jdbcType=CHAR},
+			</if>
+			<if test="activitiCode != null">
+				activiti_code = #{activitiCode,jdbcType=CHAR},
+			</if>
+			<if test="applyCode != null">
+				apply_code = #{applyCode,jdbcType=CHAR},
+			</if>
+			<if test="flowCode != null">
+				flow_code = #{flowCode,jdbcType=CHAR},
+			</if>
+			<if test="nodeCode != null">
+				node_code = #{nodeCode,jdbcType=CHAR},
+			</if>
+			<if test="version != null">
+				version = #{version,jdbcType=BIGINT},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+			<if test="comment != null">
+				comment = #{comment,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.guludai.market.domain.entity.ApproveApplyCommentEntity">
+		update approve_apply_comment
+		set comment_code = #{commentCode,jdbcType=CHAR},
+		user_code = #{userCode,jdbcType=CHAR},
+		activiti_code = #{activitiCode,jdbcType=CHAR},
+		apply_code = #{applyCode,jdbcType=CHAR},
+		flow_code = #{flowCode,jdbcType=CHAR},
+		node_code = #{nodeCode,jdbcType=CHAR},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR},
+		comment = #{comment,jdbcType=LONGVARCHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.guludai.market.domain.entity.ApproveApplyCommentEntity">
+		update approve_apply_comment
+		set comment_code = #{commentCode,jdbcType=CHAR},
+		user_code = #{userCode,jdbcType=CHAR},
+		activiti_code = #{activitiCode,jdbcType=CHAR},
+		apply_code = #{applyCode,jdbcType=CHAR},
+		flow_code = #{flowCode,jdbcType=CHAR},
+		node_code = #{nodeCode,jdbcType=CHAR},
+		version = #{version,jdbcType=BIGINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		data_status = #{dataStatus,jdbcType=CHAR},
+		disk_status = #{diskStatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<!-- 通过流水号查询备注信息 -->
+	<select id="selectCommentsByApplyCode" resultMap="ResultMapWithBLOBs">
+		SELECT 
+			*
+		FROM approve_apply_comment c WHERE c.apply_code = #{applyCode} order by create_time desc
+	</select>
+	
+	<!-- 通过流水编号与节点编号查询批备 -->
+	<select id="selectCommentByApplyCodeAndNodeCode" resultMap="BaseResultMap" >
+		SELECT * FROM approve_apply_comment t WHERE t.apply_code = #{applyCode} AND t.node_code = #{nodeCode}
+	</select>
+	
+</mapper>

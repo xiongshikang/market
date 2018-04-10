@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>erp厂商管理</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="static/plugins/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="static/css/global.css" media="all">
+    <link rel="stylesheet" href="static/plugins/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+        <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">公司名</label>
+            <div class="layui-input-inline">
+                <input type="text" onchange="javascript:$('#btn_query').click();" class="layui-input" id="companyName">
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+    <div  id="toolbar" class="layui-btn-group">
+        <button class="layui-btn layui-btn-small" id="btn_add">
+            <i class="layui-icon">&#xe654;</i>
+        </button>
+        <button class="layui-btn layui-btn-small" id="btn_edit">
+            <i class="layui-icon">&#xe642;</i>
+        </button>
+        <button class="layui-btn layui-btn-small" id="btn_del">
+            <i class="layui-icon">&#xe640;</i>
+        </button>
+    </div>
+    <table id="userTable">
+
+    </table>
+
+</div>
+
+<script type="text/javascript" src="static/plugins/jquery.min.js"></script>
+<script type="text/javascript" src="static/plugins/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="static/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="static/admin/common/util.js"></script>
+<script type="text/javascript" src="static/admin/shopCompany/shopCompany.js"></script>
+</body>
+
+</html>

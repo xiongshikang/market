@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head>
+    <meta charset="UTF-8">
+    <title>进度查看</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/plugins/bootstrap-table/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="static/plugins/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="static/css/global.css" media="all">
+    <link rel="stylesheet" href="static/plugins/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+<div class="admin-main">
+    <form  class="layui-form layui-form-pane" onsubmit="javascript:return false;">
+          <div class="layui-form-item" style="margin-bottom:0px;">
+            <label class="layui-form-label">门店名</label>
+            <div class="layui-input-inline">
+                <input type="text" onchange="javascript:$('#btn_query').click();" class="layui-input" id="shopName">
+            </div>
+            <label class="layui-form-label">老板手机号</label>            <div class="layui-input-inline">
+                <input type="text" onchange="javascript:$('#btn_query').click();" class="layui-input" id="bossMobile">
+            </div>
+            <button type="button" id="btn_query"  class="layui-btn layui-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            <input style="display:none;" id="approveResult" />
+        </div> 
+    </form>
+    <div  id="toolbar" class="layui-btn-group">
+        <button shiro:hasPermission="/approveApplyRecord/edit" class="layui-btn layui-btn-small" id="btn_edit">查看进度</button>
+        <button class="layui-btn layui-btn-small" id="btn_edit1">审批结果-同意</button>
+        <button class="layui-btn layui-btn-small" id="btn_edit2">审批结果-拒绝</button>
+        <button class="layui-btn layui-btn-small" id="btn_edit3">审批结果-待定</button>
+         <button class="layui-btn layui-btn-small" id="btn_edit6">全部</button>
+    </div>
+    <table id="userTable">
+
+    </table>
+
+</div>
+<script type="text/javascript" src="static/plugins/jquery.min.js"></script>
+<script type="text/javascript" src="static/plugins/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="static/plugins/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="static/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="static/admin/common/util.js"></script>
+<script type="text/javascript" src="static/admin/approveApplyRecord/approveApplyRecord.js"></script>
+</body>
+
+</html>

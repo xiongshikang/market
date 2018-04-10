@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.guludai.market.domain.dao.ApproveSecurityResourceEntityMapper" >
+  <resultMap id="BaseResultMap" type="cn.guludai.market.domain.entity.ApproveSecurityResourceEntity" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="resource_code" property="resourceCode" jdbcType="CHAR" />
+    <result column="resource_parent_code" property="resourceParentCode" jdbcType="CHAR" />
+    <result column="resource_name" property="resourceName" jdbcType="VARCHAR" />
+    <result column="resource_path" property="resourcePath" jdbcType="VARCHAR" />
+    <result column="resource_order" property="resourceOrder" jdbcType="INTEGER" />
+    <result column="resource_type" property="resourceType" jdbcType="INTEGER" />
+    <result column="resource_item" property="resourceItem" jdbcType="VARCHAR" />
+    <result column="resource_href" property="resourceHref" jdbcType="VARCHAR" />
+    <result column="resource_icon" property="resourceIcon" jdbcType="VARCHAR" />
+    <result column="resource_description" property="resourceDescription" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="data_status" property="dataStatus" jdbcType="CHAR" />
+    <result column="disk_status" property="diskStatus" jdbcType="CHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+	id,resource_code,resource_parent_code,resource_name,resource_path,resource_order,
+	resource_type,resource_item,resource_href,resource_icon,resource_description,
+	version,create_time,update_time,data_status,disk_status
+  </sql>
+  
+  <!-- 添加资源 -->
+  <insert id="insert" parameterType="cn.guludai.market.domain.entity.ApproveSecurityResourceEntity">
+  	insert into approve_security_resource (id,resource_code,resource_parent_code,resource_name,resource_path,resource_order,
+	resource_type,resource_item,resource_href,resource_icon,resource_description,
+	version,create_time,update_time,data_status,disk_status)  VALUES 
+	(#{id},#{resourceCode},#{resourceParentCode},#{resourceName},#{resourcePath},#{resourceOrder},
+	#{resourceType},#{resourceItem},#{resourceHref},#{resourceIcon},#{resourceDescription},
+	#{version},#{createTime},#{updateTime},#{dataStatus},#{diskStatus})
+  </insert>
+  
+  <!-- 查询所有资源数据 -->
+  <select id="selectProveSecurityResourceEntity" parameterType="cn.guludai.market.web.user.request.ApproveSecurityResourceEntityReq" resultMap="BaseResultMap">
+  	 SELECT <include refid="Base_Column_List" /> FROM approve_security_resource 
+  	 WHERE data_status = 'Y' and disk_status = 'Y'
+  	 <if test="resourceName!=null and resourceName!='' ">
+  	 	and resource_name = #{resourceName}
+  	 </if>
+  </select>
+  
+  <!-- 通过资源编号修改 -->
+  <update id="edit" parameterType="cn.guludai.market.domain.entity.ApproveSecurityResourceEntity">
+		update approve_security_resource
+		<set>
+			<if test="resourceParentCode != null">
+				resource_parent_code = #{resourceParentCode},
+			</if>
+			<if test="resourceName != null">
+				resource_name = #{resourceName},
+			</if>
+			<if test="resourcePath != null">
+				resource_path = #{resourcePath},
+			</if>
+			<if test="resourceOrder != null">
+				resource_order = #{resourceOrder},
+			</if>
+			<if test="resourceType != null">
+				resource_type = #{resourceType},
+			</if>
+			<if test="resourceItem != null">
+				resource_item = #{resourceItem},
+			</if>
+			<if test="resourceHref != null">
+				resource_href = #{resourceHref},
+			</if>
+			<if test="resourceIcon != null">
+				resource_icon = #{resourceIcon,jdbcType=CHAR},
+			</if>
+			<if test="resourceDescription!=null">
+				resource_description = #{resourceDescription},
+			</if>
+			<if test="version != null">
+				version = version+1,
+			</if>
+			<if test="updateTime != null">
+				update_time = NOW(),
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where resource_code = #{resourceCode}  
+	</update>
+ 
+    <!--通过编号查询资源-->
+ 	<select id="select" resultMap="BaseResultMap">
+ 		SELECT <include refid="Base_Column_List" /> FROM approve_security_resource WHERE resource_code = #{resourceCode}
+ 	</select>
+ 	<!-- 获取类型为 1（菜单类型）的数据 -->
+ 	<select id="resourceAllByResourceType" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+ 		SELECT <include refid="Base_Column_List" /> FROM approve_security_resource  WHERE   
+ 		 data_status='Y' 
+ 		 and disk_status='Y'
+ 		 <if test="resourceType!=null">
+ 		  and resource_type = #{resourceType}
+ 		 </if>
+ 	</select>
+ 	
+ 	<!-- 通过用户编号查询用户所有资源 -->
+ 	<select id="getResourceByUserCode" resultMap="BaseResultMap" >
+ 		(SELECT DISTINCT s.* FROM  approve_security_resource s INNER JOIN 
+				approve_security_role_resource r ON s.resource_code = r.resource_code
+				INNER JOIN approve_security_user_role su ON r.role_code = su.role_code
+			 WHERE su.user_code = #{userCode} 
+			 and r.data_status = 'Y' AND r.disk_status = 'Y'
+			 <if test="resourceType!=null and resourceType!=''">
+					 and s.resource_type = #{resourceType}
+			 </if>	
+			)
+			 union 
+			(
+			SELECT s.* FROM approve_security_resource s INNER JOIN approve_security_user_resource r ON
+					s.resource_code = r.resource_code WHERE r.user_code = #{userCode}
+					and r.data_status = 'Y' AND r.disk_status = 'Y'
+					<if test="resourceType!=null and resourceType!=''">
+					  and s.resource_type = #{resourceType}
+			       </if>  	   
+			)
+ 	</select>
+ 	
+ 	<!-- 册除 -->
+ 	<select id="deleteResourceByResourceCode">
+ 		UPDATE approve_security_resource SET data_status = 'N',update_time = NOW(), version = version+1 WHERE resource_code = #{resourceCode}
+ 	</select>
+ 	
+</mapper>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.guludai.market.domain.dao.ApproveSecurityUserMapper" >
+  <resultMap id="BaseResultMap" type="cn.guludai.market.domain.entity.ApproveSecurityUser" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_code" property="userCode" jdbcType="CHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="parent_code" property="parentCode" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="version" property="version" jdbcType="BIGINT" />
+    <result column="data_status" property="dataStatus" jdbcType="CHAR" />
+    <result column="disk_status" property="diskStatus" jdbcType="CHAR" />
+  </resultMap>
+
+
+  <!-- 通过用户名查找用户信息 -->
+  <select id="selectUserByUserName" resultMap="BaseResultMap" >
+  		SELECT * FROM approve_security_user u WHERE u.user_name = #{userName} AND u.data_status = 'Y' AND u.disk_status = 'Y'
+  </select>
+  
+  <!-- 通过用户名查找用户信息 -->
+  <select id="selectAll" resultMap="BaseResultMap" >
+  	SELECT u.user_code , u.user_name FROM approve_security_user u WHERE u.data_status = 'Y' AND u.disk_status = 'Y'
+  </select>
+  
+  <!-- 通过用户编号查找用户信息 -->
+  <select id="selectUserByUserCode" resultMap="BaseResultMap" >
+  	 SELECT * FROM approve_security_user u WHERE u.user_code=#{userCode}  AND u.data_status = 'Y' AND u.disk_status = 'Y'
+  </select>
+
+  <!--根据条件插入数据-->
+  <insert id="insertSelective" parameterType="cn.guludai.market.domain.entity.ApproveSecurityUser" >
+    insert into approve_security_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userCode != null" >
+        user_code,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="parentCode != null" >
+        parent_code,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="dataStatus != null" >
+        data_status,
+      </if>
+      <if test="diskStatus != null" >
+        disk_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userCode != null" >
+        #{userCode,jdbcType=CHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCode != null" >
+        #{parentCode,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="diskStatus != null" >
+        #{diskStatus,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!--根据条件修改数据-->
+  <update id="updateByPrimaryKeySelective" parameterType="cn.guludai.market.domain.entity.ApproveSecurityUser" >
+    update approve_security_user
+    <set >
+      <if test="userCode != null" >
+        user_code = #{userCode,jdbcType=CHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCode != null" >
+        parent_code = #{parentCode,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = NOW(),
+      </if>
+      <if test="version != null" >
+        version = version + 1,
+      </if>
+      <if test="dataStatus != null" >
+        data_status = #{dataStatus,jdbcType=CHAR},
+      </if>
+      <if test="diskStatus != null" >
+        disk_status = #{diskStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where user_code = #{userCode,jdbcType=CHAR}  
+  </update>
+
+  <!--模糊查询-->
+  <select id="selectByCondition" resultMap="BaseResultMap">
+    SELECT * FROM approve_security_user
+    <include refid="whereParam" />
+  </select>
+
+  <!--查询条件-->
+  <sql id="whereParam">
+    <where>
+      <if test="userCode != null" >
+        AND user_code = #{userCode,jdbcType=CHAR}
+      </if>
+      <if test="userName != null and userName!='' " >
+        AND user_name = #{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null" >
+        AND password = #{password,jdbcType=VARCHAR}
+      </if>
+      <if test="salt != null" >
+        AND salt = #{salt,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null" >
+        AND email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="sex != null" >
+        AND sex = #{sex,jdbcType=CHAR}
+      </if>
+      <if test="phone != null" >
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null" >
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="parentCode != null" >
+        AND parent_code = #{parentCode,jdbcType=CHAR}
+      </if>
+      <if test="createTime != null" >
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="version != null" >
+        AND version = #{version,jdbcType=BIGINT}
+      </if>
+      <if test="dataStatus != null" >
+        AND data_status = #{dataStatus,jdbcType=CHAR}
+      </if>
+      <if test="diskStatus != null" >
+        AND disk_status = #{diskStatus,jdbcType=CHAR}
+      </if>
+    </where>
+  </sql>
+
+
+  <!--分页查询-->
+  <select id="selectSecurityUserListPage" parameterType="cn.guludai.market.domain.model.ApproveSecurityUserModel"  resultMap="BaseResultMap">
+    select
+     *
+    FROM approve_security_user 
+            where
+            data_status = 'Y'
+			and disk_status = 'Y'
+			<if test="userCode != null" >
+        AND user_code = #{userCode,jdbcType=CHAR}
+      </if>
+      <if test="userName != null and userName!='' " >
+        AND user_name = #{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null" >
+        AND email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="sex != null" >
+        AND sex = #{sex,jdbcType=CHAR}
+      </if>
+      <if test="phone != null" >
+        AND phone = #{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null" >
+        AND address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="parentCode != null" >
+        AND parent_code = #{parentCode,jdbcType=CHAR}
+      </if>
+      <if test="createTime != null" >
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="version != null" >
+        AND version = #{version,jdbcType=BIGINT}
+      </if>
+      <if test="dataStatus != null" >
+        AND data_status = #{dataStatus,jdbcType=CHAR}
+      </if>
+      <if test="diskStatus != null" >
+        AND disk_status = #{diskStatus,jdbcType=CHAR}
+      </if>
+	  <if test="limit != null and limit != '' ">
+	      limit  #{limit} OFFSET #{offset}
+	  </if>
+  </select>
+
+  <!--&lt;!&ndash;查询总条数&ndash;&gt;-->
+  <select id="selectSecurityUserListNum" parameterType="cn.guludai.market.domain.model.ApproveSecurityUserModel"  resultType="java.lang.Integer">
+    select
+    count(*) AS num
+    FROM approve_security_user
+    <include refid="whereParam" />
+  </select>
+  
+</mapper>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.guludai.market.domain.dao.ApproveSecurityRoleEntityMapper" >
+  <resultMap id="BaseResultMap" type="cn.guludai.market.domain.entity.ApproveSecurityRoleEntity" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="role_code" property="roleCode" jdbcType="CHAR" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_order" property="roleOrder" jdbcType="INTEGER" />
+    <result column="role_description" property="roleDescription" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="data_status" property="dataStatus" jdbcType="CHAR" />
+    <result column="disk_status" property="diskStatus" jdbcType="CHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+	id,role_code,role_name,role_order,role_description,
+	version,create_time,update_time,data_status,disk_status
+  </sql>
+  
+   <!-- 添加角色 -->
+  <insert id="insert" parameterType="cn.guludai.market.domain.entity.ApproveSecurityRoleEntity">
+  	insert into approve_security_role (id,role_code,role_name,role_order,role_description,
+	version,create_time,update_time,data_status,disk_status)  VALUES 
+	(#{id},#{roleCode},#{roleName},#{roleOrder},#{roleDescription},
+	#{version},#{createTime},#{updateTime},#{dataStatus},#{diskStatus})
+  </insert>
+  
+  <!-- 查询所有角色数据 -->
+  <select id="selectApproveSecurityRoleEntity" parameterType="cn.guludai.market.web.user.request.ApproveSecurityRoleEntityReq" resultMap="BaseResultMap">
+  	 SELECT <include refid="Base_Column_List" /> FROM approve_security_role 
+  	 WHERE data_status = 'Y' and disk_status = 'Y'
+  	 <if test="roleName!=null and roleName!='' ">
+  	 	and role_name = #{roleName}
+  	 </if>
+  	 <if test="limit != null and limit != '' ">
+			limit  #{limit} OFFSET #{offset}
+	  </if>
+  </select>
+ 
+  
+  <select id="selectApproveSecurityRoleEntityCount" parameterType="cn.guludai.market.web.user.request.ApproveSecurityRoleEntityReq" resultType="java.lang.Integer">
+  	SELECT count(1) FROM approve_security_role 
+  	 WHERE data_status = 'Y' and disk_status = 'Y'
+  	 <if test="roleName!=null and roleName!='' ">
+  	 	and role_name = #{roleName}
+  	 </if>
+  </select>
+  
+  <!-- 通过资源编号修改 -->
+  <update id="edit" parameterType="cn.guludai.market.domain.entity.ApproveSecurityRoleEntity">
+		update approve_security_role
+		<set>
+			<if test="roleName != null">
+				role_name = #{roleName},
+			</if>
+			<if test="roleDescription != null">
+				role_description = #{roleDescription},
+			</if>
+			<if test="roleOrder != null">
+				role_order = #{roleOrder},
+			</if>
+			<if test="version != null">
+				version = version+1,
+			</if>
+			<if test="updateTime != null">
+				update_time = NOW(),
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			<if test="diskStatus != null">
+				disk_status = #{diskStatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where role_code = #{roleCode}
+	</update>
+	
+	<!--通过编号查询资源-->
+ 	<select id="select" resultMap="BaseResultMap">
+ 		SELECT <include refid="Base_Column_List" /> FROM approve_security_role WHERE role_code = #{roleCode}
+ 	</select>
+  
+  	
+</mapper>
